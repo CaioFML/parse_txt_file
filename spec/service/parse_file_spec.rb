@@ -6,7 +6,7 @@ RSpec.describe ParseFile do
       {
         comprador: ["João Silva", "Amy Pond", "Marty McFly", "Snake Plissken"],
         descrição: [
-            "R$10 off R$20 of food", "R$30 of awesome for R$10", "R$20 Sneakers for R$5", "R$20 Sneakers for R$5"
+          "R$10 off R$20 of food", "R$30 of awesome for R$10", "R$20 Sneakers for R$5", "R$20 Sneakers for R$5"
         ],
         preço_unitário: %w[10.0 10.0 5.0 5.0],
         quantidade: %w[2 5 1 4],

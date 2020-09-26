@@ -4,16 +4,14 @@ class ParseFile < ApplicationService
   end
 
   def call
-    columns_hash = transform_columns_in_hash
-    transposed_rows = transpose_rows_and_columns
+    keys = transform_columns_to_symbol(extract_columns_from_file)
 
-    insert_values(columns_hash, transposed_rows)
-    columns_hash.transform_values(&:flatten!)
+    Hash[keys.zip(transpose_rows_and_columns)]
   end
 
   private
 
-  attr_reader :file, :rows
+  attr_reader :file
 
   def read_file(file)
     File.open(file, "r")
@@ -23,9 +21,8 @@ class ParseFile < ApplicationService
     @rows ||= file.readlines
   end
 
-  def transform_columns_in_hash
-    columns = extract_columns_from_file
-    Hash[columns.collect { |column| [column.downcase.tr(" ", "_").to_sym, []] }]
+  def transform_columns_to_symbol(columns)
+    columns.map { |key| key.downcase.tr(" ", "_").to_sym }
   end
 
   def extract_columns_from_file
@@ -38,14 +35,5 @@ class ParseFile < ApplicationService
 
   def split_rows
     rows.map { |row| row.chomp.split("\t") }
-  end
-
-  def insert_values(columns, rows)
-    columns[:comprador] << rows[0]
-    columns[:descrição] << rows[1]
-    columns[:preço_unitário] << rows[2]
-    columns[:quantidade] << rows[3]
-    columns[:endereço] << rows[4]
-    columns[:fornecedor] << rows[5]
   end
 end
