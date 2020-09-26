@@ -5,7 +5,7 @@ class ParseFile < ApplicationService
 
   def call
     columns_hash = transform_columns_in_hash
-    transposed_rows = split_rows.transpose
+    transposed_rows = transpose_rows_and_columns
 
     insert_values(columns_hash, transposed_rows)
     columns_hash.transform_values(&:flatten!)
