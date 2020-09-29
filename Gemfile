@@ -17,7 +17,6 @@ gem "slim-rails"
 group :development, :test do
   gem "byebug", platforms: %i[mri mingw x64_mingw]
   gem "pry-rails"
-  gem "rspec-rails"
   gem "rubocop", require: false
   gem "rubocop-rails", require: false
   gem "rubocop-rspec", require: false
@@ -28,6 +27,11 @@ group :development do
   gem "web-console", ">= 3.3.0"
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
+end
+
+group :test do
+  gem "rspec-rails"
+  gem "shoulda-matchers"
 end
 
 gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
