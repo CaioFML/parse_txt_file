@@ -1,24 +1,34 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Importador de vendas
 
-Things you may want to cover:
+## Setup
 
-* Ruby version
+Siga os passos a seguir para rodar esta aplicação:
 
-* System dependencies
+- Rode o build da imagem do docker:
 
-* Configuration
+    `docker-compose build`
 
-* Database creation
+- Suba o servidor, isso também irá criar e rodar as migrations do banco de dados:
 
-* Database initialization
+    `docker-compose up`
 
-* How to run the test suite
+- Acesse pelo browser:
 
-* Services (job queues, cache servers, search engines, etc.)
+    `localhost:3000`
+    
+## Rodando os testes
 
-* Deployment instructions
+- Rode o comando abaixo para rodar os testes:
 
-* ...
+    `docker-compose run --rm app bundle exec rspec`
+
+## Rodando o rubocop:
+
+- Esta aplicação foi feita utilizando o [rubocop](https://github.com/rubocop-hq/rubocop), uma gem que força a utilização dos estilos propostos em [RubyStyle Guide](https://rubystyle.guide/)
+    
+    `docker-compose run --rm app bundle exec rubocop`
+    
+## Referências
+
+- Foi utilizado o [betterspec](https://www.betterspecs.org/) como referência de boas práticas na criação dos testes.
