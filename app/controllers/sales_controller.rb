@@ -1,5 +1,6 @@
 class SalesController < ApplicationController
   def index
-    @sales = Sale.all
+    @sales = Sale.includes(:product, :buyer, :provider).all
+    @amount = @sales.map(&:product).map(&:amount).sum
   end
 end
