@@ -19,7 +19,7 @@ Siga os passos a seguir para rodar esta aplicação:
     
 ## Rodando os testes
 
-- Rode o comando abaixo para rodar os testes:
+- Rode o comando abaixo para executar os testes:
 
     `docker-compose run --rm app bundle exec rspec`
 
