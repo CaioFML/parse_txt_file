@@ -1,0 +1,13 @@
+.modal.fade#importModal tabindex="-1" role="dialog"
+  .modal-dialog role="document"
+    .modal-content
+      = form_tag(importers_path, multipart: true) do
+        .modal-header
+          h2 Importar vendas
+          button.close type="button" data-dismiss="modal"
+            span x
+        .modal-body
+          = file_field_tag "file"
+        .modal-footer
+          = submit_tag "Enviar", class: "btn btn-primary"
+          button.btn.btn-secondary type="button" data-dismiss="modal" Fechar

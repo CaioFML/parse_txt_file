@@ -1,0 +1,35 @@
+h1.text-center Importador de vendas
+
+.container
+
+  = render "message"
+
+  = link_to "Importar", "#", class: "btn btn-primary",
+          data: {toggle: "modal", target: "#importModal"}
+
+  .table-responsive
+    table.table.table-hover
+      thead
+        tr
+          th Comprador
+          th Descrição
+          th Preço Unitário
+          th Quantidade
+          th Endereço
+          th Fornecedor
+      tbody
+        - @sales.each do |sale|
+          tr
+            td = sale.buyer.name
+            td = sale.product.description
+            td = number_to_currency(sale.product.unit_price, unit: "R$ ", separator: ",")
+            td = sale.product.quantity
+            td = sale.provider.address
+            td = sale.provider.name
+        tr
+          td colspan="4"
+          td
+            strong Valor total
+          td#amount = number_to_currency(@amount, unit: "R$ ", separator: ",")
+
+= render "import_modal"
